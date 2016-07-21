@@ -14,13 +14,9 @@ class BiLSTMQA(object):
 	def __init__(self, voca_size, hidden_size, ydim, learn_rate=0.1):
 
 		self.nnet = StackedBiLSTM(voca_size, hidden_size, ydim)
-		self.trained = False
 
 	def fit(self, x, y, vx=None, vy=None, max_epochs=10000, batch_size=5):
-		#x: (s, b)
-		#y: (b,)
-		#get a mask
-		#forward them to bilstm
+		
 		mask = self.__get_mask(x)
 		num_batches = x.shape[1] // batch_size
 		batch_idx = 0
@@ -40,15 +36,12 @@ class BiLSTMQA(object):
 				"""
 				validate
 				if vx != None:
-					print score(vx, vy)
+					print self.score(vx, vy)
 				"""
 			batch_idx = (batch_idx+1) % num_batches
 
-		self.trained = True
-		self.self_pickl()
 
 	def predict(self, x):
-		assert self.trained
 		mask = self.__get_mask(x)
 		return self.nnet.predict(x, mask)
 
