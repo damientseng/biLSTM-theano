@@ -4,3 +4,4 @@ The structure is illustrated in the following pic. A sequence is processed from 
 interesting information than an ordinary LSTM. Serveral biLSTMs can be stacked together to form a deep network.
 This repository is specifically implemented to do text classification on the [movie review dataset](http://www.cs.cornell.edu/people/pabo/movie-review-data)
 With some casual training, accuracy > 0.8 is easily obtained.
+![](https://github.com/saltypaul/biLSTM-theano/blob/master/Pics/biLSTM.png)
